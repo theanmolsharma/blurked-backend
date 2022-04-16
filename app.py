@@ -18,10 +18,10 @@ def hello_world():
     if request.method == 'POST':
         data = request.get_json()
         user = data['body']
-        options = {'removeName': data['removeName'] == 'true', 'removeAddress': data['removeAddress'] == 'true',
-                   'removeEmail': data['removeEmail'] == 'true', 'removePhone': data['removePhone'] == 'true',
-                   'removeDate': data['removeDate'] == 'true', 'removePostalCode': data['removePostalCode'] == 'true',
-                   'removeGender': data['removeGender'] == 'true', 'removeURL': data['removeURL'] == 'true'}
+        options = {'removeName': data['removeName'], 'removeAddress': data['removeAddress'],
+                   'removeEmail': data['removeEmail'], 'removePhone': data['removePhone'],
+                   'removeDate': data['removeDate'], 'removePostalCode': data['removePostalCode'],
+                   'removeGender': data['removeGender'], 'removeURL': data['removeURL']}
         Filter = filter.Filter()
         data = Filter.filter(user, options)
         return redirect(url_for('success', body=data))
